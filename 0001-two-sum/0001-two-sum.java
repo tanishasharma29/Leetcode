@@ -1,15 +1,29 @@
-class Solution {
+/*class Solution { // BRUTE FORCE T.C = 0(n2) S.C = 0(1)
     public int[] twoSum(int[] nums, int target) {
-        
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
-                
-                if (nums[i] + nums[j] == target) {
-                    return new int[]{i, j};
+                if( nums[i] + nums[j] == target){
+                    return new int[] {i,j};
                 }
             }
         }
+        return new int []{};
         
-        return new int[]{};
+    }
+}*/
+class Solution{ //HASHMAP T.C = 0(n) S.C= 0(n)
+    public int[] twoSum(int[] nums, int target){
+        HashMap<Integer,Integer> Map = new HashMap <>();
+        for (int i = 0; i < nums.length; i++){
+            int needed = target - nums[i];
+            if (Map.containsKey(needed)) {
+                return new int[] {Map.get(needed),i };
+            }
+            Map.put(nums[i],i);
+        
+            
+        }
+        return new int [] {};
     }
 }
+ 
